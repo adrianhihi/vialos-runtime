@@ -1,0 +1,25 @@
+{
+  "name": "@vial/runtime",
+  "version": "0.1.0",
+  "description": "Self-healing agent runtime with PCEC engine and Gene Map",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "@anthropic-ai/sdk": "^0.24.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0",
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^20.12.7"
+  },
+  "keywords": ["agent", "self-healing", "pcec", "gene-map", "vialos"],
+  "license": "MIT"
+}
