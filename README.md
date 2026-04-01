@@ -42,6 +42,17 @@ Agent fails              →   PCEC engine diagnoses the failure
 
 ---
 
+## The problem nobody talks about
+
+An AI agent with 85% accuracy fails **80% of the time** on a 10-step task.
+That's not a bug. That's math.
+
+Carnegie Mellon, 2025: even the best agent (Gemini 2.5 Pro)
+fails real-world tasks **70% of the time**.
+
+88% of enterprise AI agent projects never reach production.
+The #1 reason: agents fail, learn nothing, and fail again.
+
 ## Quick Start
 
 ```bash
