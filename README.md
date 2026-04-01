@@ -20,38 +20,46 @@
 
 ## The problem with AI agents today
 
-```
-Agent fails              →   Task stops
-                         →   You debug manually
-                         →   You restart
-                         →   It fails again
-                         →   Nothing was learned
-```
-
-Every failure is a fresh start. Every error is lost knowledge.
-
-**VialOS changes this:**
+**The math is brutal:**
 
 ```
-Agent fails              →   PCEC engine diagnoses the failure
-                         →   Generates repair strategies
-                         →   Executes the best one
-                         →   Records what worked in Gene Map
-                         →   Next time: instant fix, higher confidence
+An agent with 85% accuracy fails 80% of the time on a 10-step task.
+85% × 85% × 85% × ... × 85% (×10) = 19.7% success rate.
 ```
 
----
+This isn't a bug. It's compound failure — and it's killing agent projects everywhere.
 
-## The problem nobody talks about
+**The numbers, from 2025 research:**
 
-An AI agent with 85% accuracy fails **80% of the time** on a 10-step task.
-That's not a bug. That's math.
+| Source | Finding |
+|--------|---------|
+| Carnegie Mellon | Best agent (Gemini 2.5 Pro) fails real-world tasks **70% of the time** |
+| Carnegie Mellon | GPT-4o fails **91.4%** of office tasks |
+| Gartner | **40%** of agentic AI projects will be cancelled by 2027 |
+| MIT | **95%** of AI pilot programs stall — zero measurable P&L impact |
+| S&P Global | **42%** of companies abandoned most AI initiatives in 2024 |
+| Enterprise survey | Only **95 of 1,837** AI teams have agents actually live in production |
 
-Carnegie Mellon, 2025: even the best agent (Gemini 2.5 Pro)
-fails real-world tasks **70% of the time**.
+**The root cause (MIT calls it "the learning gap"):**
 
-88% of enterprise AI agent projects never reach production.
-The #1 reason: agents fail, learn nothing, and fail again.
+```
+Day 1:   Agent fails on nonce error
+Day 100: Agent fails on the same nonce error
+         Nothing was learned. Every failure is a fresh start.
+```
+
+> *"We're deploying goldfish and expecting them to become sharks."*
+
+**VialOS fixes this:**
+
+```
+Failure            →   PCEC engine diagnoses it
+                   →   Constructs repair strategies
+                   →   Picks the best one (Q-learning)
+                   →   Executes and records in Gene Map
+                   →   Next identical failure: instant fix
+                   →   Confidence compounds over time
+```
 
 ## Quick Start
 
