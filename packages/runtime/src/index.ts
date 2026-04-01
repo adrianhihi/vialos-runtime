@@ -23,3 +23,6 @@ export type { CommitResult } from './pcec/commit.js'
 
 export { AMPBus } from './amp/bus.js'
 export type { AMPMessage, AMPSession, AMPMessageType, AgentRole } from './amp/protocol.js'
+
+export { ClaudeCodeAdapter } from './adapters/index.js'
+export type { ClaudeCodeAdapterConfig, AdapterRunConfig, AdapterResult, AgentExecutor } from './adapters/index.js'
