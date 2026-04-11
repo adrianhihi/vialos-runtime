@@ -225,12 +225,23 @@ export class GeneMap {
     }
   }
 
-  // Get best repair strategy for a failure
+  // Get best repair strategy for a failure.
+  //
+  // Returns null if no gene meets the minimum quality threshold (q_value > 0.3),
+  // matching the threshold already enforced in query(). Previously this method
+  // returned any gene with success_count > 0 regardless of q_value, which allowed
+  // a single lucky LLM-generated strategy with q_value=0.2 to be preferred over
+  // falling back to adapter defaults (Q-value poisoning).
+  //
+  // The 0.3 threshold is chosen to match the existing query() method and align
+  // with the gene failure default (0.2): any gene scored as "failure-first" is
+  // excluded, any gene scored as "mixed or better" is kept.
   getBestStrategy(failureCode: string): Gene | null {
     const row = this.db.prepare(`
       SELECT * FROM genes
       WHERE failure_code LIKE ?
       AND success_count > 0
+      AND q_value > 0.3
       ORDER BY q_value DESC
       LIMIT 1
     `).get(`%${failureCode}%`) as Record<string, unknown> | undefined
